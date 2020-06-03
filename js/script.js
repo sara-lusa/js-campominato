@@ -32,11 +32,14 @@ switch (difficoltà) {
 // dichiaro array
 var numeriComputer = [];
 
-for (var i = 0; i <= 16; i++ ) {
+while ( numeriComputer.length <= 16 ) {
   // Genero numero random
   var computerRandom = Math.floor(Math.random() * 100) + 1;
+  var numeroDoppio = numeriComputer.includes(computerRandom);
   // push nell'array
-  numeriComputer.push(computerRandom);
+  if (numeroDoppio == false) {
+    numeriComputer.push(computerRandom);
+  }
 }
 console.log(numeriComputer);
 
