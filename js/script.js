@@ -14,18 +14,25 @@
 
 // Genero 16 numeri casuali tra 1 e 100 e li metto in una array
 // dichiaro array
-for (16) {
+var numeriComputer = [];
+for (var i = 0; i <= 16; i++ ) {
   // Genero numero random
+  var computerRandom = Math.floor(Math.random() * 100) + 1;
   // push nell'array
+  numeriComputer.push(computerRandom);
+  console.log(numeriComputer);
 }
 
 // Chiedo all'utente di inserire un numero alla volta, fino a un massimo di 84 (100 - 16)
-while () {
-  prompt
-  if (insides) {
-    // si ferma
-  }
-  push
+var numeriUtente = [];
+while (i <= (100 - 16) && !(numeriComputer.includes(singoloNumeroUtente))) {
+  var singoloNumeroUtente = prompt('Inserisci un numero da 1 a 100.');
+  // if (insides) {
+  //   // si ferma
+  // }
+  numeriUtente.push(singoloNumeroUtente);
+  console.log(singoloNumeroUtente);
+  console.log(numeriUtente);
 }
 // Controllo se il numero è tra quelli generati inizialmente, nel caso termino la partita.
 
