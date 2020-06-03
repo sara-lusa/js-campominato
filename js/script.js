@@ -12,6 +12,7 @@
 // Con difficoltà 0=> tra 1 e 100, con difficoltà 1 => tra 1 e 80, con difficoltà 2=> tra 1 e 50
 
 
+var numeroMassimo = 100;
 // Genero 16 numeri casuali tra 1 e 100 e li metto in una array
 // dichiaro array
 var numeriComputer = [];
@@ -25,15 +26,24 @@ for (var i = 0; i <= 16; i++ ) {
 
 // Chiedo all'utente di inserire un numero alla volta, fino a un massimo di 84 (100 - 16)
 var numeriUtente = [];
-while (i <= (100 - 16) && !(numeriComputer.includes(singoloNumeroUtente))) {
-  var singoloNumeroUtente = prompt('Inserisci un numero da 1 a 100.');
-  // if (insides) {
-  //   // si ferma
-  // }
-  numeriUtente.push(singoloNumeroUtente);
+var singoloNumeroUtente;
+var numeroUtenteVietato = false;
+
+while ( numeroUtenteVietato == false || numeriUtente.length <= (numeroMassimo - 16) ) {
+
+  singoloNumeroUtente = parseInt(prompt('Inserisci un numero da 1 a 100.'));
+
+  // Controllo se il numero è tra quelli generati inizialmente
+  if ( numeriComputer.includes(singoloNumeroUtente) ) {
+    numeroUtenteVietato = true;
+  }
+
+  // Se non c'è, continuo a chiedere
+  else {
+    numeriUtente.push(singoloNumeroUtente);
+  }
   console.log(singoloNumeroUtente);
   console.log(numeriUtente);
 }
-// Controllo se il numero è tra quelli generati inizialmente, nel caso termino la partita.
 
 // Comunico il punteggio, il numero di volte che ha inserito un numero consentito
