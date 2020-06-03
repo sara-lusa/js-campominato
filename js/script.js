@@ -11,11 +11,13 @@
 // range di numeri casuali.
 // Con difficoltà 0=> tra 1 e 100, con difficoltà 1 => tra 1 e 80, con difficoltà 2=> tra 1 e 50
 
-
+// PER BONUS
 var numeroMassimo = 100;
+
 // Genero 16 numeri casuali tra 1 e 100 e li metto in una array
 // dichiaro array
 var numeriComputer = [];
+
 for (var i = 0; i <= 16; i++ ) {
   // Genero numero random
   var computerRandom = Math.floor(Math.random() * 100) + 1;
@@ -29,7 +31,7 @@ var numeriUtente = [];
 var singoloNumeroUtente;
 var numeroUtenteVietato = false;
 
-while ( numeroUtenteVietato == false || numeriUtente.length <= (numeroMassimo - 16) ) {
+while ( numeroUtenteVietato == false && numeriUtente.length <= (numeroMassimo - 16) ) {
 
   singoloNumeroUtente = parseInt(prompt('Inserisci un numero da 1 a 100.'));
 
@@ -47,3 +49,8 @@ while ( numeroUtenteVietato == false || numeriUtente.length <= (numeroMassimo - 
 }
 
 // Comunico il punteggio, il numero di volte che ha inserito un numero consentito
+var messaggio = 'Hai vinto!';
+if (numeroUtenteVietato == true) {
+  messaggio = 'Peccato, hai perso. il tuo punteggio è di ' + (numeriUtente.length + 1);
+}
+console.log(messaggio);
