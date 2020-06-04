@@ -13,92 +13,115 @@
 // Con difficoltà 0=> tra 1 e 100, con difficoltà 1 => tra 1 e 80, con difficoltà 2=> tra 1 e 50
 
 
-// PER BONUS
-// Chiedo all'utente la difficoltà del livello
-// Validazione
-var difficoltà = parseInt(prompt('Scegli un livello di difficoltà: 0, 1 o 2?'));
-
-while ( isNaN(difficoltà) || difficoltà > 2 || difficoltà < 0 || difficoltà == '' ) {
-  difficoltà = parseInt(prompt('ERRORE: Scegli un livello di difficoltà: 0, 1 o 2?'));
-}
-console.log(difficoltà);
-
-// Dichiaro il livello di difficoltà scelto
-var numeroMassimoCaselle = sceltaLivelloDiDifficoltà(difficoltà);
-
-
-console.log(numeroMassimoCaselle);
-
-// Dichiaro il numeroBombe
-var numeroBombe = 16;
-
+// // PER BONUS
+// // Chiedo all'utente la difficoltà del livello
+// // Validazione
+// var difficoltà = parseInt(prompt('Scegli un livello di difficoltà: 0, 1 o 2?'));
+//
+// while ( isNaN(difficoltà) || difficoltà > 2 || difficoltà < 0 || difficoltà == '' ) {
+//   difficoltà = parseInt(prompt('ERRORE: Scegli un livello di difficoltà: 0, 1 o 2?'));
+// }
+// console.log(difficoltà);
+//
+// // Dichiaro il livello di difficoltà scelto
+// var numeroMassimoCaselle = sceltaLivelloDiDifficoltà(difficoltà);
+//
+//
+// console.log(numeroMassimoCaselle);
+//
+// // Dichiaro il numeroBombe
+// var numeroBombe = 16;
+//
 // // Genero 16 numeri casuali tra 1 e 100 e li metto in una array
 // // dichiaro array
 // var arrayBombe = [];
 //
 // while ( arrayBombe.length < numeroBombe ) {
 //   // Genero numero random
-//   var computerRandom = Math.floor(Math.random() * 100) + 1;
+//   var computerRandom = generoNumeriRandom(numeroMassimoCaselle, 1);
+//   console.log(computerRandom);
 //
-//   // Controllo se ci sono numeri doppi nell'array delle bombe
-//   var numeroDoppio = arrayBombe.includes(computerRandom);
-//
-//   // Se non ci sono numeri ripetuti, faccio push nell'array delle bombe
-//   if (numeroDoppio == false) {
-//     arrayBombe.push(computerRandom);
-//   }
+//   // // Controllo se ci sono numeri doppi nell'array delle bombe
+//   // var numeroDoppio = arrayBombe.includes(computerRandom);
+//   //
+//   // // Se non ci sono numeri ripetuti, faccio push nell'array delle bombe
+//   // if (numeroDoppio == false) {
+//   //   arrayBombe.push(computerRandom);
+//   // }
 // }
 // console.log(arrayBombe);
 //
-// // Chiedo all'utente di inserire un numero alla volta, fino a un massimo di 84 (100 - 16)
-// var numeriUtente = [];
-// var singoloNumeroUtente;
-// var numeroUtenteVietato = false;
+// // // Chiedo all'utente di inserire un numero alla volta, fino a un massimo di 84 (100 - 16)
+// // var numeriUtente = [];
+// // var singoloNumeroUtente;
+// // var numeroUtenteVietato = false;
+// //
+// // // Ciclo di richiesta e controllo di numeri dell'utente
+// // while ( numeroUtenteVietato == false && numeriUtente.length <= (numeroMassimoCaselle - numeroBombe) ) {
+// //
+// //   singoloNumeroUtente = parseInt(prompt('Inserisci un numero da 1 a 100.'));
+// //
+// //   // Controllo se il numero è tra quelli generati inizialmente
+// //   // Se c'è, blocco il ciclo
+// //   if ( arrayBombe.includes(singoloNumeroUtente) ) {
+// //     numeroUtenteVietato = true;
+// //   }
+// //
+// //   // Se non c'è, continuo a chiedere altri numeri
+// //   else {
+// //     numeriUtente.push(singoloNumeroUtente);
+// //   }
+// // }
+// //
+// // console.log(numeriUtente);
+// //
+// // // Comunico il punteggio, il numero di volte che ha inserito un numero consentito
+// // var messaggio = 'Hai vinto!';
+// // if (numeroUtenteVietato == true) {
+// //   messaggio = 'BOOM, hai perso. il tuo punteggio è di ' + (numeriUtente.length);
+// // }
+// // console.log(messaggio);
 //
-// // Ciclo di richiesta e controllo di numeri dell'utente
-// while ( numeroUtenteVietato == false && numeriUtente.length <= (numeroMassimoCaselle - numeroBombe) ) {
+// // FUNZIONI
+// // Creo una funzione che cambia il numeroMassimo in base al livello di difficoltà
+// // argomento: livello di difficoltà scelto dall'utente col prompt
+// // return numeroMassimo di 'caselle' di gioco
+// function sceltaLivelloDiDifficoltà(livelloDiDifficolta) {
+//   var numeroMassimo;
 //
-//   singoloNumeroUtente = parseInt(prompt('Inserisci un numero da 1 a 100.'));
-//
-//   // Controllo se il numero è tra quelli generati inizialmente
-//   // Se c'è, blocco il ciclo
-//   if ( arrayBombe.includes(singoloNumeroUtente) ) {
-//     numeroUtenteVietato = true;
+//   switch (livelloDiDifficolta) {
+//     case 0:
+//       numeroMassimo = 100;
+//       break;
+//     case 1:
+//       numeroMassimo = 80;
+//       break;
+//     case 2:
+//       numeroMassimo = 50;
+//       break;
 //   }
 //
-//   // Se non c'è, continuo a chiedere altri numeri
-//   else {
-//     numeriUtente.push(singoloNumeroUtente);
-//   }
+//   return numeroMassimo;
 // }
-//
-// console.log(numeriUtente);
-//
-// // Comunico il punteggio, il numero di volte che ha inserito un numero consentito
-// var messaggio = 'Hai vinto!';
-// if (numeroUtenteVietato == true) {
-//   messaggio = 'BOOM, hai perso. il tuo punteggio è di ' + (numeriUtente.length);
-// }
-// console.log(messaggio);
 
-// FUNZIONI
-// Creo una funzione che cambia il numeroMassimo in base al livello di difficoltà
-// argomento: livello di difficoltà scelto dall'utente col prompt
-// return numeroMassimo di 'caselle' di gioco
-function sceltaLivelloDiDifficoltà(livelloDiDifficolta) {
-  var numeroMassimo;
+function generoNumeriRandom(max, min) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
 
-  switch (livelloDiDifficolta) {
-    case 0:
-      numeroMassimo = 100;
-      break;
-    case 1:
-      numeroMassimo = 80;
-      break;
-    case 2:
-      numeroMassimo = 50;
-      break;
+function verificoSeElementoInArray(elementoDaVerificare, listaArray) {
+  var numeroRipetuto = false;
+
+  for (var i = 0; i < listaArray.length; i++) {
+    if (elementoDaVerificare == listaArray[i]) {
+      numeroRipetuto = true;
+    }
   }
 
-  return numeroMassimo;
+  return numeroRipetuto;
 }
+
+var test = [1, 2, 3, 4, 5];
+var elemento = 33;
+var funzione = verificoSeElementoInArray(elemento, test)
+
+console.log(funzione);
