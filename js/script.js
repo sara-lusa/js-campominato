@@ -15,10 +15,9 @@
 
 // PER BONUS
 // Chiedo all'utente la difficoltà del livello
-// Validazione
 var difficoltà = parseInt(prompt('Scegli un livello di difficoltà: 0, 1 o 2?'));
 
-
+// Validazione numeri inseriti per la difficoltà
 while ( isNaN(difficoltà) || difficoltà > 2 || difficoltà < 0 ) {
   difficoltà = parseInt(prompt('ERRORE: Scegli un livello di difficoltà: 0, 1 o 2?'));
 }
@@ -30,7 +29,7 @@ var numeroMassimoCaselle = sceltaLivelloDiDifficoltà(difficoltà);
 var numeroBombe = 16;
 
 // Genero 16 numeri casuali tra 1 e 100 e li metto in una array
-// dichiaro array
+// dichiaro array bombe
 var arrayBombe = [];
 
 while ( arrayBombe.length < numeroBombe ) {
@@ -54,16 +53,19 @@ var numeroUtenteVietato = false;
 // Ciclo di richiesta e controllo di numeri dell'utente
 while ( numeroUtenteVietato == false && numeriUtente.length <= (numeroMassimoCaselle - numeroBombe) ) {
 
-  var singoloNumeroUtente = parseInt(prompt('Inserisci un numero da 1 a 100.'));
-  while ( singoloNumeroUtente < 1 || singoloNumeroUtente > 100 || singoloNumeroUtente == '' || isNaN(singoloNumeroUtente)) {
-    singoloNumeroUtente = parseInt(prompt('ERRORE: Inserisci un numero da 1 a 100.'));
-  }
+  // Chiedo all'utente un numero da 1 a 100
+  var singoloNumeroUtente = parseInt(prompt('Inserisci un numero da 1 a ' + numeroMassimoCaselle));
 
+  // Validazione: controllo che i numeri inseriti siano validi
+  while ( singoloNumeroUtente < 1 || singoloNumeroUtente > 100 || singoloNumeroUtente == '' || isNaN(singoloNumeroUtente)) {
+    singoloNumeroUtente = parseInt(prompt('ERRORE: Inserisci un numero da 1 a ' + numeroMassimoCaselle));
+  }
+  // Validazione: controllo che l'utente non abbia inserito numeri doppi
   while (verificoSeElementoInArray(singoloNumeroUtente, numeriUtente) === true) {
     singoloNumeroUtente = parseInt(prompt('ERRORE: hai già inserito questo numero.'));
   }
 
-  // Controllo se il numero è tra quelli generati inizialmente
+  // Controllo se il numero è tra quelli generati inizialmente nell'array delle bombe
   // Se c'è, blocco il ciclo
   if ( verificoSeElementoInArray(singoloNumeroUtente, arrayBombe) === true ) {
     numeroUtenteVietato = true;
@@ -76,7 +78,7 @@ while ( numeroUtenteVietato == false && numeriUtente.length <= (numeroMassimoCas
 
 console.log(numeriUtente);
 
-// Comunico il punteggio, il numero di volte che ha inserito un numero consentito
+// Comunico la vittoria o sconfitta e il punteggio, ovvero il numero di volte che ha inserito un numero consentito
 var messaggio = 'Hai vinto!';
 
 if (numeroUtenteVietato == true) {
