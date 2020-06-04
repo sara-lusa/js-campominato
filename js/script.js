@@ -17,13 +17,16 @@
 // Chiedo all'utente la difficoltà del livello
 // Validazione
 var difficoltà = parseInt(prompt('Scegli un livello di difficoltà: 0, 1 o 2?'));
+console.log('Questa è la risposta alla domanda', difficoltà);
 
-while ( isNaN(difficoltà) || difficoltà > 2 || difficoltà < 0 || difficoltà == '' ) {
+while ( isNaN(difficoltà) || difficoltà > 2 || difficoltà < 0 ) {
   difficoltà = parseInt(prompt('ERRORE: Scegli un livello di difficoltà: 0, 1 o 2?'));
+  console.log('Questa è dentro gli errori, e richiede', difficoltà);
 }
 
 // Dichiaro il livello di difficoltà scelto
 var numeroMassimoCaselle = sceltaLivelloDiDifficoltà(difficoltà);
+console.log(numeroMassimoCaselle);
 
 // Dichiaro il numeroBombe
 var numeroBombe = 16;
