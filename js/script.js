@@ -17,16 +17,14 @@
 // Chiedo all'utente la difficoltà del livello
 // Validazione
 var difficoltà = parseInt(prompt('Scegli un livello di difficoltà: 0, 1 o 2?'));
-console.log('Questa è la risposta alla domanda', difficoltà);
+
 
 while ( isNaN(difficoltà) || difficoltà > 2 || difficoltà < 0 ) {
   difficoltà = parseInt(prompt('ERRORE: Scegli un livello di difficoltà: 0, 1 o 2?'));
-  console.log('Questa è dentro gli errori, e richiede', difficoltà);
 }
 
 // Dichiaro il livello di difficoltà scelto
 var numeroMassimoCaselle = sceltaLivelloDiDifficoltà(difficoltà);
-console.log(numeroMassimoCaselle);
 
 // Dichiaro il numeroBombe
 var numeroBombe = 16;
@@ -59,6 +57,10 @@ while ( numeroUtenteVietato == false && numeriUtente.length <= (numeroMassimoCas
   var singoloNumeroUtente = parseInt(prompt('Inserisci un numero da 1 a 100.'));
   while ( singoloNumeroUtente < 1 || singoloNumeroUtente > 100 || singoloNumeroUtente == '' || isNaN(singoloNumeroUtente)) {
     singoloNumeroUtente = parseInt(prompt('ERRORE: Inserisci un numero da 1 a 100.'));
+  }
+
+  while (verificoSeElementoInArray(singoloNumeroUtente, numeriUtente) === true) {
+    singoloNumeroUtente = parseInt(prompt('ERRORE: hai già inserito questo numero.'));
   }
 
   // Controllo se il numero è tra quelli generati inizialmente
