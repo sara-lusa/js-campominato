@@ -15,68 +15,90 @@
 
 // PER BONUS
 // Chiedo all'utente la difficoltà del livello
-var difficoltà = prompt('Scegli un livello di difficoltà: 0, 1 o 2?');
-var numeroMassimo;
+// Validazione
+var difficoltà = parseInt(prompt('Scegli un livello di difficoltà: 0, 1 o 2?'));
 
-// Dichiaro un numeroMassimo diverso per ogni difficoltà
-switch (difficoltà) {
-  case '0':
-    numeroMassimo = 100;
-    break;
-  case '1':
-    numeroMassimo = 80;
-    break;
-  case '2':
-    numeroMassimo = 50;
-    break;
+while ( isNaN(difficoltà) || difficoltà > 2 || difficoltà < 0 || difficoltà == '' ) {
+  difficoltà = parseInt(prompt('ERRORE: Scegli un livello di difficoltà: 0, 1 o 2?'));
 }
+console.log(difficoltà);
+
+// Dichiaro il livello di difficoltà scelto
+var numeroMassimoCaselle = sceltaLivelloDiDifficoltà(difficoltà);
+
+
+console.log(numeroMassimoCaselle);
 
 // Dichiaro il numeroBombe
 var numeroBombe = 16;
 
-// Genero 16 numeri casuali tra 1 e 100 e li metto in una array
-// dichiaro array
-var arrayBombe = [];
+// // Genero 16 numeri casuali tra 1 e 100 e li metto in una array
+// // dichiaro array
+// var arrayBombe = [];
+//
+// while ( arrayBombe.length < numeroBombe ) {
+//   // Genero numero random
+//   var computerRandom = Math.floor(Math.random() * 100) + 1;
+//
+//   // Controllo se ci sono numeri doppi nell'array delle bombe
+//   var numeroDoppio = arrayBombe.includes(computerRandom);
+//
+//   // Se non ci sono numeri ripetuti, faccio push nell'array delle bombe
+//   if (numeroDoppio == false) {
+//     arrayBombe.push(computerRandom);
+//   }
+// }
+// console.log(arrayBombe);
+//
+// // Chiedo all'utente di inserire un numero alla volta, fino a un massimo di 84 (100 - 16)
+// var numeriUtente = [];
+// var singoloNumeroUtente;
+// var numeroUtenteVietato = false;
+//
+// // Ciclo di richiesta e controllo di numeri dell'utente
+// while ( numeroUtenteVietato == false && numeriUtente.length <= (numeroMassimoCaselle - numeroBombe) ) {
+//
+//   singoloNumeroUtente = parseInt(prompt('Inserisci un numero da 1 a 100.'));
+//
+//   // Controllo se il numero è tra quelli generati inizialmente
+//   // Se c'è, blocco il ciclo
+//   if ( arrayBombe.includes(singoloNumeroUtente) ) {
+//     numeroUtenteVietato = true;
+//   }
+//
+//   // Se non c'è, continuo a chiedere altri numeri
+//   else {
+//     numeriUtente.push(singoloNumeroUtente);
+//   }
+// }
+//
+// console.log(numeriUtente);
+//
+// // Comunico il punteggio, il numero di volte che ha inserito un numero consentito
+// var messaggio = 'Hai vinto!';
+// if (numeroUtenteVietato == true) {
+//   messaggio = 'BOOM, hai perso. il tuo punteggio è di ' + (numeriUtente.length);
+// }
+// console.log(messaggio);
 
-while ( arrayBombe.length < numeroBombe ) {
-  // Genero numero random
-  var computerRandom = Math.floor(Math.random() * 100) + 1;
+// FUNZIONI
+// Creo una funzione che cambia il numeroMassimo in base al livello di difficoltà
+// argomento: livello di difficoltà scelto dall'utente col prompt
+// return numeroMassimo di 'caselle' di gioco
+function sceltaLivelloDiDifficoltà(livelloDiDifficolta) {
+  var numeroMassimo;
 
-  // Controllo se ci sono numeri doppi nell'array delle bombe
-  var numeroDoppio = arrayBombe.includes(computerRandom);
-
-  // Se non ci sono numeri ripetuti, faccio push nell'array delle bombe
-  if (numeroDoppio == false) {
-    arrayBombe.push(computerRandom);
+  switch (livelloDiDifficolta) {
+    case 0:
+      numeroMassimo = 100;
+      break;
+    case 1:
+      numeroMassimo = 80;
+      break;
+    case 2:
+      numeroMassimo = 50;
+      break;
   }
+
+  return numeroMassimo;
 }
-console.log(arrayBombe);
-
-// Chiedo all'utente di inserire un numero alla volta, fino a un massimo di 84 (100 - 16)
-var numeriUtente = [];
-var singoloNumeroUtente;
-var numeroUtenteVietato = false;
-
-while ( numeroUtenteVietato == false && numeriUtente.length <= (numeroMassimo - numeroBombe) ) {
-
-  singoloNumeroUtente = parseInt(prompt('Inserisci un numero da 1 a 100.'));
-
-  // Controllo se il numero è tra quelli generati inizialmente
-  if ( arrayBombe.includes(singoloNumeroUtente) ) {
-    numeroUtenteVietato = true;
-  }
-
-  // Se non c'è, continuo a chiedere
-  else {
-    numeriUtente.push(singoloNumeroUtente);
-  }
-}
-
-console.log(numeriUtente);
-
-// Comunico il punteggio, il numero di volte che ha inserito un numero consentito
-var messaggio = 'Hai vinto!';
-if (numeroUtenteVietato == true) {
-  messaggio = 'BOOM, hai perso. il tuo punteggio è di ' + (numeriUtente.length);
-}
-console.log(messaggio);
